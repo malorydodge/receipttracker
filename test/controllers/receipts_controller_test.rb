@@ -17,7 +17,7 @@ class ReceiptsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create receipt" do
     assert_difference('Receipt.count') do
-      post receipts_url, params: { receipt: { amount: @receipt.amount, date: @receipt.date, location: @receipt.location, type: @receipt.type } }
+      post receipts_url, params: { receipt: {amount: @receipt.amount, date: @receipt.date, location: @receipt.location, kind: @receipt.type } }
     end
 
     assert_redirected_to receipt_url(Receipt.last)
@@ -34,7 +34,7 @@ class ReceiptsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update receipt" do
-    patch receipt_url(@receipt), params: { receipt: { amount: @receipt.amount, date: @receipt.date, location: @receipt.location, type: @receipt.type } }
+    patch receipt_url(@receipt), params: { receipt: {amount: @receipt.amount, date: @receipt.date, location: @receipt.location, kind: @receipt.type } }
     assert_redirected_to receipt_url(@receipt)
   end
 

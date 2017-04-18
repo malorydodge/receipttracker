@@ -4,7 +4,7 @@ class CreateReceipts < ActiveRecord::Migration[5.0]
       t.string :location
       t.date :date
       t.decimal :amount
-      t.string :type
+      t.string :kind
 
       t.timestamps
     end
