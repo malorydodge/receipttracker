@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170404034339) do
     t.date     "date"
     t.decimal  "amount"
     t.string   "kind"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

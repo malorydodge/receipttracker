@@ -1,10 +1,18 @@
 class ReceiptsController < ApplicationController
   before_action :set_receipt, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /receipts
   # GET /receipts.json
+
+
   def index
-    @receipts = Receipt.all
+    @receipts = Receipt.find_by_user_id(current_user)
+    if params[:search]
+      @receipts = Receipt.search(params[:search]).order("created_at DESC")
+    else
+      @receipts = Receipt.all.order('created_at DESC')
+    end
   end
 
   # GET /receipts/1
@@ -14,8 +22,8 @@ class ReceiptsController < ApplicationController
 
   # GET /receipts/new
   def new
-    @receipt = Receipt.new
-  end
+    @receipt = current_user.receipts.new
+    end
 
   # GET /receipts/1/edit
   def edit
@@ -24,7 +32,7 @@ class ReceiptsController < ApplicationController
   # POST /receipts
   # POST /receipts.json
   def create
-    @receipt = Receipt.new(receipt_params)
+    @receipt = current_user.receipts.new(receipt_params)
 
     respond_to do |format|
       if @receipt.save

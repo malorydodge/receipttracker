@@ -10,6 +10,10 @@
         <li class="active"><a href="#">Home</a></li>
         <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
         <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+        <li><%= form_tag(receipts_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+              <%= submit_tag "Search" %></li>
+        <% end %>
       </ul>
       <% else %>
           <ul class="nav navbar-nav">
@@ -26,7 +30,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:location) %></th>
       <th><%= model_class.human_attribute_name(:date) %></th>
       <th><%= model_class.human_attribute_name(:amount) %></th>
@@ -38,7 +41,6 @@
   <tbody>
     <% @receipts.each do |receipt| %>
       <tr>
-        <td><%= link_to receipt.id, receipt_path(receipt) %></td>
         <td><%= receipt.location %></td>
         <td><%= receipt.date %></td>
         <td><%= receipt.amount %></td>
