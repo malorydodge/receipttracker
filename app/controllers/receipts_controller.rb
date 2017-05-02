@@ -2,6 +2,7 @@ class ReceiptsController < ApplicationController
   before_action :set_receipt, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+
   # GET /receipts
   # GET /receipts.json
 
@@ -77,6 +78,6 @@ class ReceiptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
-      params.require(:receipt).permit(:location, :date, :amount, :kind)
+      params.require(:receipt).permit(:location, :date, :amount, :kind, :image)
     end
 end

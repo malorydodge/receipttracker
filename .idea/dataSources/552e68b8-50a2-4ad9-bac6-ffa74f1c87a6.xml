@@ -46,32 +46,32 @@
     </column>
     <column id="16" parent="4" name="location">
       <Position>1</Position>
-      <DataType>varchar|0</DataType>
+      <DataType>VARCHAR|0</DataType>
     </column>
     <column id="17" parent="4" name="date">
       <Position>2</Position>
-      <DataType>date|0</DataType>
+      <DataType>DATE|0</DataType>
     </column>
     <column id="18" parent="4" name="amount">
       <Position>3</Position>
-      <DataType>decimal|0</DataType>
+      <DataType>DECIMAL|0</DataType>
     </column>
     <column id="19" parent="4" name="kind">
       <Position>4</Position>
-      <DataType>varchar|0</DataType>
+      <DataType>VARCHAR|0</DataType>
     </column>
     <column id="20" parent="4" name="user_id">
       <Position>5</Position>
-      <DataType>integer|0</DataType>
+      <DataType>INTEGER|0</DataType>
     </column>
     <column id="21" parent="4" name="created_at">
       <Position>6</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>DATETIME|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="22" parent="4" name="updated_at">
       <Position>7</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>DATETIME|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="23" parent="4">

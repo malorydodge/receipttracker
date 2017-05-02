@@ -12,6 +12,10 @@
   <dd><%= @receipt.amount %></dd>
   <dt><strong><%= model_class.human_attribute_name(:kind) %>:</strong></dt>
   <dd><%= @receipt.kind %></dd>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @receipt.image.thumb.url %>
+  </p>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
