@@ -7,7 +7,8 @@ class ReceiptsController < ApplicationController
 
 
   def index
-    @receipts = Receipt.find_by_user_id(current_user)
+    @user = current_user
+    @receipts = @user.receipts
     if params[:search]
       @receipts = Receipt.search(params[:search]).order("created_at DESC")
     else
@@ -23,7 +24,7 @@ class ReceiptsController < ApplicationController
   # GET /receipts/new
   def new
     @receipt = current_user.receipts.new
-    end
+  end
 
   # GET /receipts/1/edit
   def edit
