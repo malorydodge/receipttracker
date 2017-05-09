@@ -8,17 +8,28 @@ class ReceiptsController < ApplicationController
 
 
   def index
-    @receipts = Receipt.find_by_user_id(current_user)
-    if params[:search]
-      @receipts = Receipt.search(params[:search]).order("created_at DESC")
-    else
+    if current_user.try(:superadmin_role?)
+      render :action => 'show_privileged'
       @receipts = Receipt.all.order('created_at DESC')
+    else
+      @user = current_user
+      @receipts = @user.receipts
+      if params[:search]
+        @receipts = Receipt.search(params[:search]).order("created_at DESC")
+      else
+        @receipts = Receipt.all.order('created_at DESC')
+      end
     end
   end
 
   # GET /receipts/1
   # GET /receipts/1.json
   def show
+  end
+
+  # GET /receipts
+  # GET /receipts.json
+  def show_privileged
   end
 
   # GET /receipts/new
