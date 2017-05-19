@@ -34,6 +34,7 @@
     <th><%= model_class.human_attribute_name(:date) %></th>
     <th><%= model_class.human_attribute_name(:amount) %></th>
     <th><%= model_class.human_attribute_name(:kind) %></th>
+    <th><%= model_class.human_attribute_name(:user_id) %></th>
     <th><%= model_class.human_attribute_name(:created_at) %></th>
     <th><%=t '.actions', :default => t("helpers.actions") %></th>
   </tr>
@@ -46,6 +47,7 @@
     <td><%= receipt.date %></td>
     <td><%= receipt.amount %></td>
     <td><%= receipt.kind %></td>
+    <td><%= receipt.user_id %></td>
     <td><%=l receipt.created_at %></td>
     <td>
       <%= link_to t('.show', :default => t("helpers.links.show")),
@@ -63,6 +65,5 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_receipt_path,
-            :class => 'btn-primary' %>
+
+

@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170502205245) do
     t.boolean  "superadmin_role",        default: false
     t.boolean  "supervisor_role",        default: false
     t.boolean  "user_role",              default: true
+    t.boolean  "admin",                  default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

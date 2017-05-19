@@ -40,7 +40,7 @@
   </thead>
   <tbody>
   <% @user = current_user %>
-  <% @user.receipts.each do |receipt| %>
+  <% @receipts.each do |receipt| %>
       <tr>
         <td><%= receipt.location %></td>
         <td><%= receipt.date %></td>

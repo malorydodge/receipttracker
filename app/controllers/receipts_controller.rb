@@ -8,12 +8,11 @@ class ReceiptsController < ApplicationController
 
 
   def index
-    if current_user.try(:superadmin_role?)
-      render :action => 'show_privileged'
-      @receipts = Receipt.all.order('created_at DESC')
+    @user = current_user
+    @receipts = @user.receipts
+    if @user.try(:admin?)
+      show_privileged
     else
-      @user = current_user
-      @receipts = @user.receipts
       if params[:search]
         @receipts = Receipt.search(params[:search]).order("created_at DESC")
       else
@@ -30,12 +29,19 @@ class ReceiptsController < ApplicationController
   # GET /receipts
   # GET /receipts.json
   def show_privileged
+      @receipts = Receipt.all
+    if params[:search]
+        @receipts = Receipt.search(params[:search]).order("created_at DESC")
+      else
+       @receipts = Receipt.all.order("created_at DESC")
+    end
+    render 'receipts/show_privileged'
   end
 
   # GET /receipts/new
   def new
     @receipt = current_user.receipts.new
-    end
+  end
 
   # GET /receipts/1/edit
   def edit
@@ -45,7 +51,6 @@ class ReceiptsController < ApplicationController
   # POST /receipts.json
   def create
     @receipt = current_user.receipts.new(receipt_params)
-
     respond_to do |format|
       if @receipt.save
         format.html { redirect_to @receipt, notice: 'Receipt was successfully created.' }
